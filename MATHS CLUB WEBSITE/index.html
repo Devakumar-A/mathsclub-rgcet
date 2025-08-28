@@ -10,8 +10,8 @@
   <meta name="author" content="Maths Club RGCET" />
   <meta property="og:title" content="Join Mathoria - RGCET Maths Club 🚀" />
   <meta property="og:description" content="Exciting math events, quizzes, and more — be a part of Mathoria 2K25!" />
-  <meta property="og:image" content="https://yourdomain.com/Asset/main.png" />
-  <meta property="og:url" content="https://yourdomain.com/" />
+  <meta property="og:image" content="https://mathsclub-rgcet.web.app/Asset/main.png" />
+  <meta property="og:url" content="https://mathsclub-rgcet.web.app" />
   <meta name="twitter:card" content="summary_large_image" />
   <title>Maths Club</title>
   <link rel="icon" href="./Asset/main.png" type="image/png" />
@@ -23,7 +23,112 @@
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+  <!-- AOS Animation CSS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <style>
+ 
+
+  /* Floating Logo */
+  .mathoria-logo {
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* Navigation underline animation */
+  nav a {
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  nav a::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #00ffcc;
+    transition: width 0.3s ease;
+  }
+  nav a:hover::after {
+    width: 100%;
+  }
+
+  /* Button hover glow + ripple */
+  .btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .btn::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50%;
+    transform: scale(0);
+    animation: none;
+  }
+  .btn:hover {
+    box-shadow: 0 0 20px rgba(0,255,200,0.7);
+    transform: translateY(-2px);
+  }
+  .btn:active::before {
+    top: var(--y);
+    left: var(--x);
+    transform: scale(8);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    opacity: 0;
+  }
+
+  /* Input focus glow */
+  .form-control:focus {
+    border-color: #00ffcc;
+    box-shadow: 0 0 8px #00ffcc;
+    transition: all 0.3s ease;
+  }
+
+  /* 3D Tilt on Event Cards */
+  .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+  }
+  .card:hover {
+    transform: rotateY(6deg) rotateX(4deg) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,255,200,0.3);
+  }
+
+  /* Success Message bounce */
+  #successMessage {
+    animation: bounceIn 0.8s ease;
+  }
+  @keyframes bounceIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    60% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); }
+  }
+
+  /* Rotating background shapes */
+  .bg-shape {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 50%;
+    animation: rotate 40s linear infinite;
+    z-index: -1;
+  }
+  .bg-shape.one { top: 20%; left: -100px; }
+  .bg-shape.two { bottom: 10%; right: -120px; }
+  @keyframes rotate {
+    from { transform: rotate(0); }
+    to { transform: rotate(360deg); }
+  }
     * {
       margin: 0;
       padding: 0;
@@ -99,6 +204,25 @@
         background-position: 0% 50%;
       }
     }
+    body {
+  font-family: 'Roboto', sans-serif;
+}
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+
+section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-in-out;
+}
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 
     .container-fluid.overlay {
@@ -288,6 +412,49 @@
         align-items: flex-start;
       }
     }
+     .btn {
+    display: inline-block;
+    padding: 10px 18px;
+    margin: 5px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;  /* Removes underline */
+    transition: 0.3s ease;
+  }
+
+  /* Mail Button */
+  .mail {
+    background: #f0f0f0;
+    color: #333;
+    border: 2px solid #ccc;
+  }
+  .mail:hover {
+    background: #333;
+    color: #fff;
+  }
+
+  /* WhatsApp Button */
+  .whatsapp {
+    background: #25D366;
+    color: white;
+    border: 2px solid #1ebe5d;
+  }
+  .whatsapp:hover {
+    background: white;
+    color: #25D366;
+  }
+
+  /* Instagram Button */
+  .instagram {
+    background: #E1306C;
+    color: white;
+    border: 2px solid #c72a5f;
+  }
+  .instagram:hover {
+    background: white;
+    color: #E1306C;
+  }
   </style>
 </head>
 
@@ -295,20 +462,20 @@
   <header class="d-flex justify-content-between align-items-center flex-wrap flex-md-nowrap">
     <div class="d-flex align-items-center">
       <img src="./Asset/main.png" class="mathoria-logo" alt="Maths Club Logo">
-      <h2 class="m-0">Maths Club</h2>
+      <h2 class="m-0" data-aos="flip-left">Maths Club</h2>
     </div>
     <nav class="d-flex gap-3 mt-2 mt-md-0">
-      <a href="#home" aria-label="Go to Home section">Home</a>
-<a href="#events" aria-label="View Events">Events</a>
-<a href="#about" aria-label="About the Maths Club">About</a>
-<a href="#contact" aria-label="Contact the Maths Club">Contact</a>
+      <a href="#home" aria-label="Go to Home section" data-aos="flip-left">Home</a>
+<a href="#events" aria-label="View Events" data-aos="flip-left">Events</a>
+<a href="#about" aria-label="About the Maths Club" data-aos="flip-left">About</a>
+<a href="#contact" aria-label="Contact the Maths Club" data-aos="flip-left">Contact</a>
     </nav>
   </header>
-  <section id="home" class="row g-4 align-items-center">
+  <section id="home" class="row g-4 align-items-center" data-aos="fade-up"> 
     <div class="col-12">
       <div class="event-box d-lg-flex justify-content-between align-items-start gap-4">
         <!-- Left Side: Banner and Description -->
-        <div class="col-lg-7">
+        <div class="col-lg-7" data-aos="fade-right">
           <img src="./Asset/MATHORIA LOGO.png" class="mathoria-banner mb-3" alt="Mathoria Banner" />
           <h3 class="text-center">Welcome to Mathoria 2K25</h3>
           <p>
@@ -323,7 +490,7 @@
         </div>
 
         <!-- Right Side: Form -->
-        <div class="col-lg-5">
+        <div class="col-lg-5" data-aos="fade-left">
           <div class="form-box p-3">
 
             <h4 class="text-center">Join the Club</h4>
@@ -373,12 +540,12 @@
     </div>
   </section>
 
-  <section id="events" class="container my-5">
-    <h2 class="text-center mb-4" style="font-family: 'Anton', sans-serif;"> Upcoming Events</h2>
+  <section id="events"  class="container my-5" data-aos="fade-up">
+    <h2 class="text-center mb-4" style="font-family: 'Anton', sans-serif;" data-aos="zoom-in"> Upcoming Events</h2>
     <div class="row g-4">
 
       <!-- Event Card -->
-      <div class="col-md-4">
+      <div class="col-md-4" data-aos="fade-up">
         <div class="card h-100 shadow-lg bg-dark text-light border-0">
           <img src="./Asset/coming soon.png" class="card-img-top" alt="Math Quiz Event" loading="lazy" />
           <div class="card-body d-flex flex-column justify-content-between">
@@ -396,7 +563,7 @@
       </div>
 
       <!-- Event Card -->
-      <div class="col-md-4">
+      <div class="col-md-4" data-aos="fade-up">
         <div class="card h-100 shadow-lg bg-dark text-light border-0">
           <img src="./Asset/coming soon.png" class="card-img-top" alt="Puzzle Day Event" loading="lazy" />
           <div class="card-body d-flex flex-column justify-content-between">
@@ -414,7 +581,7 @@
       </div>
 
       <!-- Event Card -->
-      <div class="col-md-4">
+      <div class="col-md-4" data-aos="fade-up">
         <div class="card h-100 shadow-lg bg-dark text-light border-0">
           <img src="./Asset/coming soon.png" class="card-img-top" alt="Math Talk Event" loading="lazy" />
           <div class="card-body d-flex flex-column justify-content-between">
@@ -431,7 +598,7 @@
         </div>
       </div>
       <!-- Event 4 -->
-      <div class="col-md-4">
+      <div class="col-md-4" data-aos="fade-up">
         <div class="card h-100 shadow-lg bg-dark text-light border-0">
           <img src="./Asset/coming soon.png" class="card-img-top" alt="Math Treasure Hunt" loading="lazy" />
           <div class="card-body d-flex flex-column justify-content-between">
@@ -449,7 +616,7 @@
       </div>
 
       <!-- Event 5 -->
-      <div class="col-md-4">
+      <div class="col-md-4" data-aos="fade-up">
         <div class="card h-100 shadow-lg bg-dark text-light border-0">
           <img src="./Asset/coming soon.png" class="card-img-top" alt="Mathemagics Show" loading="lazy" />
           <div class="card-body d-flex flex-column justify-content-between">
@@ -467,7 +634,7 @@
       </div>
 
       <!-- Event 6 -->
-      <div class="col-md-4">
+      <div class="col-md-4" data-aos="fade-up">
         <div class="card h-100 shadow-lg bg-dark text-light border-0">
           <img src="./Asset/coming soon.png" class="card-img-top" alt="Math Idea Pitching" loading="lazy" />
           <div class="card-body d-flex flex-column justify-content-between">
@@ -489,20 +656,20 @@
   </section>
 
 
-  <section id="about" class="py-5">
+  <section id="about" class="py-5" data-aos="fade-up">
     <div class="about-box container text-center px-4 py-5 position-relative">
-      <h2 class="mb-4"
+      <h2 class="mb-4" data-aos="zoom-in"
         style="font-family: 'Rajdhani', sans-serif; font-size: 32px; color: #00ffc8; letter-spacing: 1px;">
         About Mathoria
       </h2>
 
-      <p style="font-size: 18px; line-height: 1.8; font-family: 'Playfair Display', serif;">
+      <p style="font-size: 18px; line-height: 1.8; font-family: 'Playfair Display', serif;" data-aos="flip-left">
         <strong>Mathoria</strong> is more than a club — it's a vibrant community of thinkers, solvers, and creators
         from all departments of RGCET. With a unique blend of logic and fun, we’re redefining how students see and
         experience mathematics!
       </p>
 
-      <div class="row mt-4 text-start">
+      <div class="row mt-4 text-start" data-aos="fade-up">
         <div class="col-md-4 mb-4">
           <div class="p-3 h-100 bg-dark rounded-4 shadow-lg border border-light">
             <h5 class="text-warning">🎯 Our Mission</h5>
@@ -510,14 +677,14 @@
               student.</p>
           </div>
         </div>
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4 data-aos="fade-up"">
           <div class="p-3 h-100 bg-dark rounded-4 shadow-lg border border-light">
             <h5 class="text-info">📌 What We Do</h5>
             <p class="small">We conduct workshops, host thrilling competitions, organize puzzle battles, and bring in
               experts to interact with students.</p>
           </div>
         </div>
-        <div class="col-md-4 mb-4">
+        <div class="col-md-4 mb-4" data-aos="fade-up">
           <div class="p-3 h-100 bg-dark rounded-4 shadow-lg border border-light">
             <h5 class="text-success">🚀 Why Join?</h5>
             <p class="small">Meet amazing minds, challenge your skills, earn recognition, and most importantly — enjoy
@@ -528,14 +695,14 @@
 
       <!-- 👤 Coordinator & President -->
       <div class="row justify-content-center mt-5">
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4 mb-3" data-aos="fade-up">
           <div class="p-3 rounded-4 bg-dark border border-light shadow">
             <h5 class="text-info"> Club Incharge</h5>
             <p class="m-0 fw-bold">Dr. B.Sambathkumar</p>
             <small>Maths-Professor, RGCET</small>
           </div>
         </div>
-        <div class="col-md-4 mb-3">
+        <div class="col-md-4 mb-3" data-aos="fade-up">
           <div class="p-3 rounded-4 bg-dark border border-light shadow">
             <h5 class="text-warning"> Club President</h5>
             <p class="m-0 fw-bold">Devakumar A</p>
@@ -544,7 +711,7 @@
         </div>
       </div>
 
-      <div class="mt-4">
+      <div class="mt-4" data-aos="fade-up">
         <a href="#events" class="btn btn-outline-light px-4 py-2 mt-2">
           🔍 Explore Events
         </a>
@@ -555,22 +722,35 @@
         style="opacity: 0.05; background: url('./Asset/math_bg.svg') center/cover no-repeat;"></div>
     </div>
   </section>
-  <section id="contact" class="py-5 text-center">
+  <section id="contact" class="py-5 text-center" data-aos="fade-up">
     <div class="about-box container px-4 py-5 position-relative">
-      <h2 class="mb-4"
+      <h2 class="mb-4" data-aos="zoom-in"
         style="font-family: 'Rajdhani', sans-serif; font-size: 32px; color: #00ffc8; letter-spacing: 1px;">
         📞 Contact Us
       </h2>
 
-      <p class="mb-4" style="font-size: 18px; font-family: 'Playfair Display', serif;">
+      <p class="mb-4" style="font-size: 18px; font-family: 'Playfair Display', serif;" data-aos="fade-up">
         Have questions or want to collaborate? Reach out to us through any of the following platforms:
       </p>
 
       <div class="d-flex justify-content-center gap-4 flex-wrap">
-        <a href="https://www.instagram.com/mathsclub_rgcet?igsh=ajBwa2I1aGY4bnp6" target="_blank" aria-label="Visit Maths Club Instagram">
+<!-- Mail Button -->
+<a href="mailto:mathsclubrgcet2024@gmail.com" target="_blank" class="btn mail" data-aos="zoom-in">
+  ✉️ Mail
+</a>
+
+<!-- WhatsApp Button -->
+<a href="https://chat.whatsapp.com/AbCdEfGhIjKLMNOP" target="_blank" class="btn whatsapp" data-aos="zoom-in">
+  💬 WhatsApp
+</a>
+
+<!-- Instagram Button -->
+<a href="https://www.instagram.com/mathsclub_rgcet?igsh=ajBwa2I1aGY4bnp6" target="_blank" class="btn instagram" data-aos="zoom-in">
   📸 Instagram
 </a>
-        
+</a>
+       <div class="bg-shape one"></div>
+<div class="bg-shape two"></div> 
       </div>
     </div>
   </section>
@@ -590,7 +770,12 @@
       messagingSenderId: "761353813942",
       appId: "1:761353813942:web:a2c9d3944165a14da4cb17"
     };
-
+    
+AOS.init({
+  duration: 600,   // faster animation (0.6s)
+  offset: 100,     // trigger earlier (100px before element enters view)
+  once: true       // animate only once
+});
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
@@ -656,8 +841,31 @@
         alert("Something went wrong. Please try again.");
       }
     });
-  </script>
+      /* Scroll Animation Trigger */
+ const sections = document.querySelectorAll("section");
+  const options = { threshold: 0.2 };
 
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("visible");
+      }
+    });
+  }, options);
+
+  sections.forEach(section => observer.observe(section));
+  document.querySelectorAll("[data-animate]").forEach(el => observer.observe(el));
+
+  /* Button Ripple Effect */
+  document.querySelectorAll(".btn").forEach(btn => {
+    btn.addEventListener("click", function(e){
+      const rect = btn.getBoundingClientRect();
+      btn.style.setProperty("--x", `${e.clientX - rect.left}px`);
+      btn.style.setProperty("--y", `${e.clientY - rect.top}px`);
+    });
+  });
+  </script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </body>
 
 </html>
